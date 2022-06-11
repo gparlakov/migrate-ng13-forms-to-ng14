@@ -12,25 +12,24 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { ShowFormControlModule } from 'ngx-show-form-control';
 import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
 import { EventFormComponent } from './event-form/event-form.component';
-import { NgModelDemoComponent } from './ng-model-demo/ng-model-demo.component';
-import { PartyFormComponent } from './party-form/party-form.component';
-import { PersonContactComponent } from './person-contact/person-contact.component';
+// import { NgModelDemoComponent } from './ng-model-demo/ng-model-demo.component';
+// import { PartyFormComponent } from './party-form/party-form.component';
+// import { PersonContactComponent } from './person-contact/person-contact.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
 import { PeopleComponent } from './people/people.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonContactComponent,
-    PartyFormComponent,
+    // PersonContactComponent,
+    // PartyFormComponent,
     EventFormComponent,
     TagsListComponent,
-    NgModelDemoComponent,
-    PeopleComponent,
+    // NgModelDemoComponent,
+    // PeopleComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,20 +41,21 @@ import { PeopleComponent } from './people/people.component';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ShowFormControlModule.for(environment.production ? 'prod' : 'dev'),
+    MatProgressSpinnerModule,
+    // ShowFormControlModule.for(environment.production ? 'prod' : 'dev'),
     MatIconModule,
     MatDividerModule,
     MatProgressSpinnerModule,
     FormsModule,
     RouterModule.forRoot([
-      {
-        path: 'party',
-        component: PartyFormComponent,
-      },
-      {
-        path: 'ngmodel',
-        component: NgModelDemoComponent,
-      },
+      // {
+      //   path: 'party',
+      //   component: PartyFormComponent,
+      // },
+      // {
+      //   path: 'ngmodel',
+      //   component: NgModelDemoComponent,
+      // },
       {
         path: 'tags',
         component: TagsListComponent,
@@ -66,7 +66,7 @@ import { PeopleComponent } from './people/people.component';
       },
       {
         path: '**',
-        redirectTo: 'party',
+        redirectTo: 'tags',
       },
     ]),
     MatCardModule,

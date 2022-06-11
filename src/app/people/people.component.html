@@ -2,7 +2,8 @@
   <form (ngSubmit)="onSubmit()">
     <fieldset *ngFor="let person of people?.controls; index as i" style="position: relative;" class="fieldset">
       <legend>{{person?.value?.name || i}}</legend>
-      <fty-person-contact  [formControl]="person"></fty-person-contact>
+      add person here
+      <!-- <fty-person-contact  [formControlName]="i"></fty-person-contact> -->
       <button mat-button color="warn" (click)="removeAt(i)" style="position:absolute;top:5px;right:5px">✖</button>
     </fieldset>
     <button mat-button type="button" (click)="add()">Add person</button>
@@ -12,7 +13,3 @@
   </form>
 </div>
 
-<show-form-control
-    [control]="people"
-    name="people"
-  ></show-form-control>

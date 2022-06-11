@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { typedFormArray, typedFormControl } from 'forms';
-
+import { FormArray, FormControl } from '@angular/forms';
 interface Tag {
   name: string;
   value: string;
@@ -12,14 +11,14 @@ interface Tag {
   styleUrls: ['./tags-list.component.css'],
 })
 export class TagsListComponent implements OnInit {
-  form = typedFormArray<string>([]);
+  form = new FormArray([]);
 
   constructor() {}
   /*  */
   ngOnInit(): void {}
 
   add() {
-    this.form.push(typedFormControl(''));
+    this.form.push(new FormControl(''));
   }
 
   removeAt(i: number) {
@@ -28,6 +27,6 @@ export class TagsListComponent implements OnInit {
     }
   }
   onSubmit() {
-    this.form = typedFormArray<string>([]);
+    this.form = new FormArray([]);
   }
 }

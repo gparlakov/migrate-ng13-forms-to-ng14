@@ -1,8 +1,7 @@
 import { Component, OnInit, Optional, Self } from '@angular/core';
-import { NgControl, Validators } from '@angular/forms';
-import { typedFormGroup, typedFormControl, TypedControlsIn } from 'forms';
+import { NgControl, Validators, FormGroup, FormControl } from '@angular/forms';
 import { EventForm, eventDefault } from './event-form.model';
-import { ControlValueAccessorConnector } from 'forms';
+
 
 const { dateStart: defaultDateStart, timeStart: defaultTimeStart } = eventDefault();
 
@@ -11,37 +10,28 @@ const { dateStart: defaultDateStart, timeStart: defaultTimeStart } = eventDefaul
   templateUrl: './event-form.component.html',
   styleUrls: ['./event-form.component.css']
 })
-export class EventFormComponent
-  extends ControlValueAccessorConnector<
-    EventForm,
-    TypedControlsIn<EventForm>
-  >
-  implements OnInit {
-  constructor(@Optional() @Self() directive: NgControl) {
-    super(
-      directive,
-      typedFormGroup({
-        eventName: typedFormControl<string>(undefined, Validators.required),
-        location: typedFormControl<string>(),
-        dateStart: typedFormControl(defaultDateStart),
-        timeStart: typedFormControl(defaultTimeStart)
-      })
-    );
-  }
+export class EventFormComponent implements OnInit {
+  public form = new FormGroup({
+    eventName: new FormControl(undefined, Validators.required),
+    location: new FormControl(),
+    dateStart: new FormControl(defaultDateStart),
+    timeStart: new FormControl(defaultTimeStart)
+  })
+  constructor(@Optional() @Self() directive: NgControl) { }
 
   ngOnInit(): void {
-    super.ngOnInit();
+
   }
   onNameInputBlur() {
-    this.onTouch();
+    // this.onTouch();
   }
   onLocationInputBlur() {
-    this.onTouch();
+    // this.onTouch();
   }
   onStartDateInputBlur() {
-    this.onTouch();
+    // this.onTouch();
   }
   onStartTimeInputBlur() {
-    this.onTouch();
+    // this.onTouch();
   }
 }

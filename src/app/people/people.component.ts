@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { typedFormArray, typedFormControl } from 'forms';
+import { FormArray, FormControl } from '@angular/forms';
 import { PersonContact } from '../person-contact/person-contact.model';
 
 @Component({
@@ -8,14 +8,14 @@ import { PersonContact } from '../person-contact/person-contact.model';
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit {
-  people = typedFormArray<PersonContact>([typedFormControl()]);
+  people = new FormArray([new FormControl()]);
   constructor() { }
 
   ngOnInit(): void {
   }
 
   add() {
-    this.people.push(typedFormControl());
+    this.people.push(new FormControl());
   }
 
   removeAt(i: number) {
@@ -24,6 +24,6 @@ export class PeopleComponent implements OnInit {
     }
   }
   onSubmit() {
-    this.people = typedFormArray<PersonContact>([typedFormControl({name: '', email: ''})]);
+    this.people = new FormArray([new FormControl({name: '', email: ''})]);
   }
 }
