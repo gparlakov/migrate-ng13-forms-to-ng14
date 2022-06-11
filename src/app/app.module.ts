@@ -12,23 +12,22 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
 import { EventFormComponent } from './event-form/event-form.component';
-// import { NgModelDemoComponent } from './ng-model-demo/ng-model-demo.component';
+import { NgModelDemoComponent } from './ng-model-demo/ng-model-demo.component';
 // import { PartyFormComponent } from './party-form/party-form.component';
-// import { PersonContactComponent } from './person-contact/person-contact.component';
-import { TagsListComponent } from './tags-list/tags-list.component';
 import { PeopleComponent } from './people/people.component';
+import { PersonContactComponent } from './person-contact/person-contact.component';
+import { TagsListComponent } from './tags-list/tags-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // PersonContactComponent,
+    PersonContactComponent,
     // PartyFormComponent,
     EventFormComponent,
     TagsListComponent,
-    // NgModelDemoComponent,
+    NgModelDemoComponent,
     // PeopleComponent,
   ],
   imports: [
@@ -52,10 +51,10 @@ import { PeopleComponent } from './people/people.component';
       //   path: 'party',
       //   component: PartyFormComponent,
       // },
-      // {
-      //   path: 'ngmodel',
-      //   component: NgModelDemoComponent,
-      // },
+      {
+        path: 'ngmodel',
+        component: NgModelDemoComponent,
+      },
       {
         path: 'tags',
         component: TagsListComponent,
