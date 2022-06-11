@@ -17,6 +17,10 @@ export class TagsListComponent implements OnInit {
   /*  */
   ngOnInit(): void {}
 
+  tags(): FormControl[] {
+    return this.form.controls as FormControl[]
+  }
+
   add() {
     this.form.push(new FormControl(''));
   }
