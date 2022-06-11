@@ -28,7 +28,7 @@ import { TagsListComponent } from './tags-list/tags-list.component';
     EventFormComponent,
     TagsListComponent,
     NgModelDemoComponent,
-    // PeopleComponent,
+    PeopleComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,9 @@ import { PersonContact } from '../person-contact/person-contact.model';
 })
 export class PeopleComponent implements OnInit {
   people = new FormArray([new FormControl()]);
+  get peopleControls(): FormControl[] {
+    return this.people.controls as FormControl[];
+  }
   constructor() { }
 
   ngOnInit(): void {
@@ -24,6 +27,11 @@ export class PeopleComponent implements OnInit {
     }
   }
   onSubmit() {
-    this.people = new FormArray([new FormControl({name: '', email: ''})]);
+    console.log('---before', this.people.errors);
+    this.people.updateValueAndValidity();
+    console.log('---after', this.people.errors);
+    if(!this.people.errors) {
+      this.people = new FormArray([new FormControl({name: '', email: ''})]);
+    }
   }
 }

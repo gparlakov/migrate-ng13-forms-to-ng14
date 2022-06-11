@@ -1,15 +1,23 @@
 <div class="centered-content">
   <form (ngSubmit)="onSubmit()">
-    <fieldset *ngFor="let person of people?.controls; index as i" style="position: relative;" class="fieldset">
+    <fieldset *ngFor="let person of peopleControls; index as i" style="position: relative;" class="fieldset">
       <legend>{{person?.value?.name || i}}</legend>
       add person here
-      <!-- <fty-person-contact  [formControlName]="i"></fty-person-contact> -->
+      <fty-person-contact  [formControl]="person"></fty-person-contact>
       <button mat-button color="warn" (click)="removeAt(i)" style="position:absolute;top:5px;right:5px">✖</button>
     </fieldset>
     <button mat-button type="button" (click)="add()">Add person</button>
     <hr />
-    <button mat-button  color="primary" type="submit">Done</button>
-    <button mat-button  color="warn" type="reset">Reset</button>
+    <button mat-button color="primary" type="submit">Done</button>
+    <button mat-button color="warn" type="reset">Reset</button>
+    <mat-error *ngIf="people.errors">{{people.errors | json}}</mat-error>
   </form>
+  <div>
+    {{peopleControls[0].value | json}}
+
+    isValid: {{peopleControls[0].valid}}
+
+
+  </div>
 </div>
 
