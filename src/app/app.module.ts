@@ -19,7 +19,8 @@ import { NgModelDemoComponent } from './ng-model-demo/ng-model-demo.component';
 import { PeopleComponent } from './people/people.component';
 import { PersonContactComponent } from './person-contact/person-contact.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,8 @@ import { TagsListComponent } from './tags-list/tags-list.component';
       },
     ]),
     MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

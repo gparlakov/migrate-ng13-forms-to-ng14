@@ -109,7 +109,22 @@ export function forEachControlIn(form: FormGroup | FormArray) {
             return controls.some(c => c.errors != null) ? errors : null;
           }
         ]);
+
+        parentControl.asyncValidator = Validators.composeAsync([
+          parentControl.asyncValidator,
+          async (c) => {
+
+            return Promise.all(controls
+                .filter(c => typeof c?.asyncValidator ==='function')
+                .map(c => typeof c?.asyncValidator ==='function' ? c.asyncValidator(c) : Promise.resolve()
+              )
+              .then((results: (object | null)[]) => results.filter)
+
+
+          }
+        ])
       }
+
       return composer;
     }
   };
