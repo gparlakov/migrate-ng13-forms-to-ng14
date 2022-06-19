@@ -1,0 +1,7 @@
+.fieldset.invalid {
+  border-color: red;
+}
+
+::ng-deep body .invalid-form-for-people-component-specific-1231421123{
+  color: red;
+}

@@ -31,7 +31,7 @@ export class PersonContactComponent implements OnInit, ControlValueAccessor {
   }
 
   constructor(@Self() @Optional() private  parentControl: NgControl) {
-    if(parentControl !== null && 'valueAccessor' in parentControl) {
+    if(parentControl !== null) {
       parentControl.valueAccessor = this;
     }
   }

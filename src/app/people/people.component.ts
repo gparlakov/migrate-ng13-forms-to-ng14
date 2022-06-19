@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { FormArray, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,6 +18,9 @@ import { PersonContact } from '../person-contact/person-contact.model';
   styleUrls: ['./people.component.css'],
 })
 export class PeopleComponent implements OnInit {
+  @ViewChild('formIsValid', { static: true })
+  public formIsValidDialogTemplate?: TemplateRef<unknown>;
+
   people = new FormArray([new FormControl()]);
   get peopleControls(): FormControl[] {
     return this.people.controls as FormControl[];
@@ -36,19 +45,20 @@ export class PeopleComponent implements OnInit {
     );
     if (this.people.valid) {
       this.dialog
-        .open()
-        .onAction()
+        .open(this.formIsValidDialogTemplate!)
+        .afterClosed()
         .pipe(take(1))
-        .subscribe(
-          () =>
-            (this.people = new FormArray([
-              new FormControl({ name: '', email: '' }),
-            ]))
-        );
+        .subscribe(() => {
+          this.people = new FormArray([
+            new FormControl({ name: '', email: '' }),
+          ]);
+        });
     } else {
-      this.snackbar.open('People form is invalid.', 'OK', {
+      this.snackbar.open('Invalid: People form', 'OK', {
         verticalPosition: 'top',
-        politeness: 'polite',
+        politeness: 'assertive',
+        panelClass: 'invalid-form-for-people-component-specific-1231421123',
+
       });
     }
   }
